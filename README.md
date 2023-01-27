@@ -1,2 +1,2 @@
 # react-mui-typescript-boilerplate
-React, TypeScript, and Material-UI boilerplate
+React, TypeScript, Material-UI and Redux Toolkit boilerplate
