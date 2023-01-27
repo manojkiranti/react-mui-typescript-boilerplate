@@ -1,0 +1,16 @@
+{
+  "login": {
+    "username": "1234",
+    "password": "Password@123"
+  },
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

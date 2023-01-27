@@ -1,8 +1,12 @@
 import axios from "axios";
+let baseEndpoint = '';
 
-let baseUrl="https://bankgenie.dghub.io";
-
-const baseEndpoint = `${baseUrl}/api/v1/`;
+if(import.meta.env.DEV) {
+  baseEndpoint = `${import.meta.env.VITE_API_URL_DEV}`;
+}
+if(import.meta.env.PROD) {
+  baseEndpoint = `${import.meta.env.VITE_API_URL_PROD}`;
+}
 const instance = axios.create({
     baseURL: baseEndpoint,
     headers: {

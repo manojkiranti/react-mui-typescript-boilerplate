@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 import { useAppDispatch } from '../../store/store';
 import { useAppSelector } from "../../store/store";
 //actions
-import { resetLogin } from '../../store/auth/auth-slice';
+import { resetLogin, login } from '../../store/auth/auth-slice';
 
 const Header:FC = () => {
     const dispatch = useAppDispatch();
@@ -22,7 +22,7 @@ const Header:FC = () => {
     };
 
     const handleLogin = () => {
-        
+        dispatch(login({username: '1234', password:'Password@123'}))
     }
 
     return(

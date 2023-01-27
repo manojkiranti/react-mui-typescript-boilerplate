@@ -129,33 +129,38 @@ const typography = {
   },
 
   d1: {
-    fontSize: pxToRem(80),
     ...baseDisplayProperties,
+    fontSize: pxToRem(80),
   },
 
   d2: {
-    fontSize: pxToRem(72),
+    
     ...baseDisplayProperties,
+    fontSize: pxToRem(72),
   },
 
   d3: {
-    fontSize: pxToRem(64),
+    
     ...baseDisplayProperties,
+    fontSize: pxToRem(64),
   },
 
   d4: {
-    fontSize: pxToRem(56),
+    
     ...baseDisplayProperties,
+    fontSize: pxToRem(56),
   },
 
   d5: {
-    fontSize: pxToRem(48),
+    
     ...baseDisplayProperties,
+    fontSize: pxToRem(48),
   },
 
   d6: {
-    fontSize: pxToRem(40),
+    
     ...baseDisplayProperties,
+    fontSize: pxToRem(40),
   },
 
   size: {

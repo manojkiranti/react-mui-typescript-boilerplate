@@ -12,8 +12,10 @@ export const login = createAsyncThunk("auth/login",
             const data = await AuthService.login(userData);
             // throw new Error("custome error")
             return data;
-        } catch (error:unknown) {          
+        } catch (error:unknown) {        
+            console.log('error', error)  
             const message = GetErrorMessage(error)  
+            console.log('message', message)  
             return thunkAPI.rejectWithValue(message)
         }
     }
@@ -68,16 +70,16 @@ const authSlice = createSlice({
             state.isLoggedIn = true;
             state.isError = false;
             state.isSuccess = true;
-            state.user = action.payload.user;
-            state.message = action.payload.message;
+            state.user = action.payload;
+            state.message = action.payload;
         });
-        builder.addCase(login.rejected, (state, action) => {
+        builder.addCase(login.rejected, (state, action:PayloadAction<any>) => {
             state.isLoading = false;
             state.isLoggedIn = false;
             state.isError = true;
             state.isSuccess = false;
             state.user = null;
-            state.message = "";
+            state.message = action.payload.error;
         });
     }
 });
