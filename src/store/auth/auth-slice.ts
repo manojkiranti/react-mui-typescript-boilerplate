@@ -54,7 +54,10 @@ const authSlice = createSlice({
             state.isLoggedIn = false;
             state.message = "";
             state.isLoggedIn = false;
-        }
+        },
+        addUser: (state, action: PayloadAction<User>) => {
+                state.user = action.payload
+          },
     },
     extraReducers: (builder) => {
         builder.addCase(login.pending, (state) => {
@@ -79,5 +82,5 @@ const authSlice = createSlice({
     }
 });
 
-export const { resetLogin } = authSlice.actions;
+export const { resetLogin, addUser} = authSlice.actions;
 export default authSlice;
