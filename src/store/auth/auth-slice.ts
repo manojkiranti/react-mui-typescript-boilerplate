@@ -2,8 +2,10 @@ import { createSelector, PayloadAction, createAsyncThunk} from "@reduxjs/toolkit
 import { createSlice } from "@reduxjs/toolkit";
 
 import AuthService from "../../services/authService";
+import {GetErrorMessage} from "../../utils/GetErrorMessage";
 
 import userPayload from "../../types/user.type";
+import errorInterface from "../../types/error.type";
 
 export const login = createAsyncThunk("auth/login",
     async(userData:userPayload, thunkAPI) => {
@@ -11,8 +13,9 @@ export const login = createAsyncThunk("auth/login",
             const data = await AuthService.login(userData);
             // throw new Error("custome error")
             return { user: data, message: `Welcome ${data.userKYC.name}`};
-        } catch (error) {            
-            return thunkAPI.rejectWithValue(error)
+        } catch (error:unknown) {          
+            const message = GetErrorMessage(error)  
+            return thunkAPI.rejectWithValue(message)
         }
     }
 )
