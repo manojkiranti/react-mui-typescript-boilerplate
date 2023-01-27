@@ -5,14 +5,13 @@ import AuthService from "../../services/authService";
 import {GetErrorMessage} from "../../utils/GetErrorMessage";
 
 import userPayload from "../../types/user.type";
-import errorInterface from "../../types/error.type";
 
 export const login = createAsyncThunk("auth/login",
     async(userData:userPayload, thunkAPI) => {
         try {
             const data = await AuthService.login(userData);
             // throw new Error("custome error")
-            return { user: data, message: `Welcome ${data.userKYC.name}`};
+            return data;
         } catch (error:unknown) {          
             const message = GetErrorMessage(error)  
             return thunkAPI.rejectWithValue(message)
@@ -56,6 +55,27 @@ const authSlice = createSlice({
             state.message = "";
             state.isLoggedIn = false;
         }
+    },
+    extraReducers: (builder) => {
+        builder.addCase(login.pending, (state) => {
+            state.isLoading = true;
+        });
+        builder.addCase(login.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.isLoggedIn = true;
+            state.isError = false;
+            state.isSuccess = true;
+            state.user = action.payload.user;
+            state.message = action.payload.message;
+        });
+        builder.addCase(login.rejected, (state, action) => {
+            state.isLoading = false;
+            state.isLoggedIn = false;
+            state.isError = true;
+            state.isSuccess = false;
+            state.user = null;
+            state.message = "";
+        });
     }
 });
 
