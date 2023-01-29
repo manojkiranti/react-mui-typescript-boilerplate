@@ -18,6 +18,7 @@ const Loader = (Component: any) => (props: any) =>
 //pages
 const Home = Loader(lazy(() => import('../pages/Home')));
 const About = Loader(lazy(() => import('../pages/About')));
+const Login = Loader(lazy(() => import('../pages/Auth/Login')));
 const NotFound = Loader(lazy(() => import('../pages/NotFound')));
 
 const router: RouteObject[] = [
@@ -32,6 +33,10 @@ const router: RouteObject[] = [
       {
         path: '/about',
         element: <About />
+      },
+      {
+        path: '/login',
+        element: <Login />
       },
       {
         path: '*',

@@ -1,7 +1,7 @@
 import rgba from "./rgba";
 import pxToRem from "./pxToRem";
 
-function boxShadow(offset = [], radius = [], color:string, opacity:number, inset = "") {
+function boxShadow(offset:number[] = [], radius:number[] = [], color:string, opacity:number, inset:string = "") {
   const [x, y] = offset;
   const [blur, spread] = radius;
 

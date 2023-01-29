@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Helmet } from 'react-helmet-async';
 
 //MUI
-import Box from '@mui/material/Box';
+import { Box } from '@mui/material';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';

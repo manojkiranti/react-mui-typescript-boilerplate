@@ -1,30 +1,28 @@
-import  { FC, ReactNode } from "react";
+import { FC, ReactNode } from 'react';
+import PropTypes from 'prop-types';
 import { Outlet } from 'react-router-dom';
 
-//MUI
-import Box from '@mui/material/Box';
+import { Box } from '@mui/material';
 
-//components
-import Header from "./Header";
-import Footer from "./Footer";
-
-interface BaseLayout {
-    children?: ReactNode;
+interface BaseLayoutProps {
+  children?: ReactNode;
 }
 
-const BaseLayout: FC<BaseLayout> = ({ children }) => {
-    return (
-        <Box
-            sx={{
-                flex: 1,
-                height: '100%'
-            }}
-        >
-            <Header />
-            {children || <Outlet />}
-            <Footer />
-        </Box>
-    )
+const BaseLayout: FC<BaseLayoutProps> = ({ children }) => {
+  return (
+    <Box
+      sx={{
+        flex: 1,
+        height: '100%'
+      }}
+    >
+      {children || <Outlet />}
+    </Box>
+  );
+};
+
+BaseLayout.propTypes = {
+  children: PropTypes.node
 };
 
 export default BaseLayout;

@@ -7,6 +7,7 @@ const colors = {
     focus: "#e0390d",
   },
   text: {
+    main:"#4b4b5a",
     primary: "#4b4b5a"
   },
   muted: {
@@ -28,8 +29,8 @@ const colors = {
     focus: "#000000",
   },
   primary: {
-    main: "#03488d",
-    focus: "#03488d",
+    main: "#377dff",
+    focus: "#377dff",
   },
 
   secondary: {
@@ -63,8 +64,8 @@ const colors = {
   },
 
   dark: {
-    main: "#343a40",
-    focus: "#343a40",
+    main: "#1e2022",
+    focus: "#1e2022",
   },
   grey: {
     100: "#f8f9fa",

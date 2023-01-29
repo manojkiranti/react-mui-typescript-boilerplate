@@ -2,7 +2,7 @@
   "name": "react-typescript-app",
   "private": true,
   "version": "0.0.0",
-  "description": "This free and open source MUI typescript landing page.",
+  "description": "This free and open source MUI typescript boilerplate.",
   "author": {
     "name": "Manoj Rai"
   },
@@ -15,6 +15,8 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@hookform/resolvers": "^2.9.10",
+    "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.6",
     "@reduxjs/toolkit": "^1.9.1",
     "@types/chroma-js": "^2.1.4",
@@ -23,9 +25,11 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet-async": "^1.3.0",
+    "react-hook-form": "^7.42.1",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.7.0",
-    "sass": "^1.57.1"
+    "sass": "^1.57.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",
