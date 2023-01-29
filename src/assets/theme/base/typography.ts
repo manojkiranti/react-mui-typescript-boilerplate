@@ -105,14 +105,14 @@ const typography = {
   body2: {
     fontFamily: baseProperties.fontFamily,
     fontSize: baseProperties.fontSizeSM,
-    fontWeight: baseProperties.fontWeightLight,
+    fontWeight: baseProperties.fontWeightRegular,
     lineHeight: 1.5,
   },
 
   button: {
     fontFamily: baseProperties.fontFamily,
     fontSize: baseProperties.fontSizeSM,
-    fontWeight: baseProperties.fontWeightLight,
+    fontWeight: baseProperties.fontWeightRegular,
     lineHeight: 1.5,
     textTransform: "uppercase" as const
   },

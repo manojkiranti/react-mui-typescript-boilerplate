@@ -8,7 +8,7 @@ const globals = {
     scrollBehavior: "smooth",
   },
   body: {
-    backgroundColor: colors.white.main
+    backgroundColor: colors.light.main
   },
   "*, *::before, *::after": {
     margin: 0,

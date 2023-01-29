@@ -1,8 +1,10 @@
 import { Suspense, lazy } from 'react';
 import type { RouteObject } from "react-router-dom";
+import { Navigate } from 'react-router-dom';
 
 //layouts
 import BaseLayout from '../layouts/BaseLayout';
+import SidebarLayout from '../layouts/SidebarLayout';
 
 //loader
 import SuspenseLoader from '../components/UI/SuspenseLoader';
@@ -28,20 +30,27 @@ const router: RouteObject[] = [
     children: [
       {
         path: '/',
-        element: <Home />
-      },
-      {
-        path: '/about',
-        element: <About />
-      },
-      {
-        path: '/login',
         element: <Login />
       },
+   
       {
         path: '*',
         element: <NotFound />
       }
+    ]
+  },
+  {
+    path: 'dashboard',
+    element: <SidebarLayout />,
+    children: [
+      {
+        path: '',
+        element: <Navigate to="home"  />
+      },
+      {
+        path: 'home',
+        element: <Home />
+      },
     ]
   }
 ]

@@ -31,8 +31,8 @@ const NotFound:FC = () => {
             </Helmet>
             <MainContent>
                 <Container maxWidth="md">
-                    <Box textAlign="center">
-                     <img alt="404" height={180} src={notFoundImage} />
+                    <Box sx={{display:"flex", width:"100%", height:"100vh", justifyContent:"center", alignItems: "center"}}>
+                        <img alt="404" height={180} src={notFoundImage} />
                     </Box>
                 </Container>
             </MainContent>

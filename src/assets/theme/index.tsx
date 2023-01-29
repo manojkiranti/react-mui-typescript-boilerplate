@@ -27,6 +27,7 @@ import formLabel from "./components/form/formLabel";
 import select from "./components/form/select";
 import autocomplete from "./components/form/autocomplete";
 import switchButton from "./components/form/switchButton";
+import checkbox from "./components/form/checkbox";
 
 // A custom theme for this app
 const theme = createTheme({
@@ -51,6 +52,7 @@ const theme = createTheme({
         MuiAutocomplete: { ...autocomplete },
         MuiSelect: { ...select },
         MuiSwitch: { ...switchButton },
+        MuiCheckbox: { ...checkbox },
     }
   });
   

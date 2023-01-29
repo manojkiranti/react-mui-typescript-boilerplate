@@ -65,7 +65,7 @@ const authSlice = createSlice({
         builder.addCase(login.pending, (state) => {
             state.isLoading = true;
         });
-        builder.addCase(login.fulfilled, (state, action) => {
+        builder.addCase(login.fulfilled, (state, action:PayloadAction<any>) => {
             state.isLoading = false;
             state.isLoggedIn = true;
             state.isError = false;
@@ -79,7 +79,7 @@ const authSlice = createSlice({
             state.isError = true;
             state.isSuccess = false;
             state.user = null;
-            state.message = action.payload.error;
+            state.message = action.payload.error.message;
         });
     }
 });
