@@ -2,6 +2,8 @@ import { Suspense, lazy } from 'react';
 import type { RouteObject } from "react-router-dom";
 import { Navigate } from 'react-router-dom';
 
+
+
 //layouts
 import BaseLayout from '../layouts/BaseLayout';
 import SidebarLayout from '../layouts/SidebarLayout';
@@ -23,13 +25,20 @@ const About = Loader(lazy(() => import('../pages/About')));
 const Login = Loader(lazy(() => import('../pages/Auth/Login')));
 const NotFound = Loader(lazy(() => import('../pages/NotFound')));
 
+// Guard
+import ProtectedRoute from './middleware/ProtectedRoute';
+
 const router: RouteObject[] = [
   {
     element: <BaseLayout />,
     path: '',
     children: [
       {
-        path: '/',
+        path:'/',
+        element: <Navigate to="/login" replace />
+      },
+      {
+        path: '/login',
         element: <Login />
       },
    
@@ -41,14 +50,14 @@ const router: RouteObject[] = [
   },
   {
     path: 'dashboard',
-    element: <SidebarLayout />,
+    element: <ProtectedRoute><SidebarLayout /></ProtectedRoute>,
     children: [
       {
         path: '',
         element: <Navigate to="home"  />
       },
       {
-        path: 'home',
+        path: 'home', 
         element: <Home />
       },
     ]

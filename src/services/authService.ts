@@ -13,7 +13,7 @@ const login = (userData:userPayload) => {
   // For Mock Data
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      if( userData.username === 'text' && userData.password === 'test') {
+      if( userData.username === 'test' && userData.password === 'test') {
           resolve({
             name: 'test',
             mobile: 'test',

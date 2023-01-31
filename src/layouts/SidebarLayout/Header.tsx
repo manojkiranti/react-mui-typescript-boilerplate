@@ -6,12 +6,12 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import { Box } from '@mui/material';
 import Container from '@mui/material/Container';
 import MenuItem from '@mui/material/MenuItem';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import MenuIcon from '@mui/icons-material/Menu';
+import Box from '@mui/material/Box';
 //images
 import Logo from "../../assets/images/logo.png";
 

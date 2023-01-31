@@ -1,5 +1,5 @@
-import { FC } from 'react';
-import { Link } from 'react-router-dom';
+import { FC, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 // form
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
@@ -50,16 +50,25 @@ const Login: FC = () => {
     const { control, handleSubmit, formState: { errors } } = useForm<FormValues>({
         resolver: schemaResolver,
         defaultValues: {
-            username: '',
-            password: ''
+            username: 'test',
+            password: 'test'
         }
     });
     const dispatch = useAppDispatch();
-    const { isLoggedIn, isLoading, isSuccess } = useAppSelector(state => state.auth);
+    const navigate = useNavigate()
+    const { isLoggedIn, isLoading } = useAppSelector(state => state.auth);
+
+    useEffect(() => {
+        if(isLoggedIn) {
+            alert('login')
+            navigate('/dashboard')
+        }
+    },[isLoggedIn])
 
     const onSubmit: SubmitHandler<FormValues> = data => {
          dispatch(login(data))
     }
+
     return (
         <>
             <AuthLayout bottomLinks={<BottomLinks />}>
