@@ -4,13 +4,18 @@ import { createSlice } from "@reduxjs/toolkit";
 import AuthService from "../../services/authService";
 import {GetErrorMessage} from "../../utils/GetErrorMessage";
 
+import {getUser , setUser, removeUser} from "../../utils/storage";
+const user = getUser();
+
 import userPayload from "../../types/user.type";
+import userStore from "../../types/userstore.type";
 
 export const login = createAsyncThunk("auth/login",
     async(userData:userPayload, thunkAPI) => {
         try {
             const data = await AuthService.login(userData);
             // throw new Error("custome error")
+            setUser(data)
             return data;
         } catch (error:unknown) {        
             console.log('error', error)  
@@ -21,14 +26,22 @@ export const login = createAsyncThunk("auth/login",
     }
 )
 
-interface User {
-    name: string;
-    mobile: string;
-    token: string
-}
+export const logout = createAsyncThunk("auth/logout",
+    async(payload,thunkAPI) => {
+        try {
+            const data = await AuthService.logout();
+            // throw new Error("custome error")
+            removeUser()
+            return data;
+        } catch (error:unknown) {        
+            const message = GetErrorMessage(error)   
+            return thunkAPI.rejectWithValue(message)
+        }
+    }
+)
 
 interface AuthState {
-    user: User|null;
+    user: userStore|string|null;
     isError: boolean;
     isSuccess: boolean;
     isLoading: boolean;
@@ -37,12 +50,12 @@ interface AuthState {
 }
 
 const initialAuthState: AuthState = {
-    user: null,
+    user: user ? user : null,
     isError: false,
     isSuccess: false,
     isLoading: false,
     message: "",
-    isLoggedIn: false
+    isLoggedIn: user ? true : false
 }
 
 const authSlice = createSlice({
@@ -57,7 +70,7 @@ const authSlice = createSlice({
             state.message = "";
             state.isLoggedIn = false;
         },
-        addUser: (state, action: PayloadAction<User>) => {
+        addUser: (state, action: PayloadAction<userStore>) => {
                 state.user = action.payload
           },
     },
@@ -81,6 +94,15 @@ const authSlice = createSlice({
             state.user = null;
             state.message = action.payload.error.message;
         });
+
+        builder.addCase(logout.fulfilled, (state) => {
+            state.user = null;
+            state.isError = false;
+            state.isSuccess = false;
+            state.isLoggedIn = false;
+            state.message = "";
+            state.isLoggedIn = false;
+        })
     }
 });
 

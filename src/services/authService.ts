@@ -1,7 +1,10 @@
 import API from "../repositories/APINoAuth";
 import userPayload from "../types/user.type";
+import userStore from "../types/userstore.type";
+import errorResponse from "../types/errorResponse.type";
 
 const resource = 'account';
+
 
 const login = (userData:userPayload) => {
 
@@ -11,7 +14,7 @@ const login = (userData:userPayload) => {
   // });
 
   // For Mock Data
-  return new Promise((resolve, reject) => {
+  return new Promise<userStore>((resolve, reject) => {
     setTimeout(() => {
       if( userData.username === 'test' && userData.password === 'test') {
           resolve({
@@ -28,8 +31,26 @@ const login = (userData:userPayload) => {
   })
 };
 
+
+const logout = () => {
+  //For Api Call
+  // return API.post(`/logout/`, userData).then((response) => {    
+  //   return response.data;
+  // });
+
+  // For Mock Data
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({
+        message: 'User Logged Out Successfull'
+      })
+    },1000)
+  })
+};
+
 const authService = {
-    login
+    login,
+    logout
   };
   
   export default authService;

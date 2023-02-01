@@ -12,6 +12,7 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import MenuIcon from '@mui/icons-material/Menu';
 import Box from '@mui/material/Box';
+
 //images
 import Logo from "../../assets/images/logo.png";
 
@@ -19,7 +20,7 @@ import { useAppDispatch } from '../../store/store';
 import { useAppSelector } from "../../store/store";
 
 //actions
-import { resetLogin, login } from '../../store/auth/auth-slice';
+import { logout } from '../../store/auth/auth-slice';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 
@@ -28,12 +29,10 @@ const Header: FC = () => {
     const { isLoggedIn } = useAppSelector(state => state.auth);
 
     const handleLogout = () => {
-        dispatch(resetLogin())
+        dispatch(logout())
     };
 
-    const handleLogin = () => {
-        dispatch(login({ username: '1234', password: 'Password@123' }))
-    }
+    
 
     return (
         <AppBar position="static" color="transparent"> 
@@ -53,6 +52,7 @@ const Header: FC = () => {
                             </Button>
                         ))}
                     </Box>
+                    <Box onClick={handleLogout} sx={{cursor:'pointer'}}>Logout</Box>
                 </Toolbar>
             </Container>
         </AppBar>
